@@ -1,5 +1,5 @@
 [abi]
-abiname: 0.bpo.4
+abiname: 0.bpo.5
 ignore-changes:
 # Should not be used from OOT
  module:arch/x86/kvm/kvm
@@ -10,11 +10,17 @@ ignore-changes:
  module:drivers/net/can/can-dev
  module:drivers/net/ethernet/**
  module:drivers/net/wireless/**
+ module:drivers/s390/net/qeth
+ module:drivers/s390/net/qeth*
+ module:drivers/scsi/cxgbi/*
+ module:drivers/scsi/libiscs*
  module:drivers/scsi/qla2xxx/qla2xxx
  module:drivers/target/iscsi/iscsi_target_mod
  module:drivers/target/target_core_mod
  module:drivers/usb/musb/*
  module:net/ceph/libceph
+ module:net/l2tp/*
+ module:net/rds/rds
  module:sound/firewire/snd-firewire-lib
  module:sound/i2c/other/snd-ak4113
  module:sound/i2c/other/snd-ak4114
@@ -26,8 +32,12 @@ ignore-changes:
  azx_send_cmd
  can_rx_register
  cpuidle_*
+ inet_frag_*
+ inet_frags_*
+ kvm_async_pf_task_wait
  kvmppc_*
  musb_*
+ perf_trace_*
  tcp_make_synack
  tcp_parse_options
  tcp_try_fastopen
@@ -69,6 +79,8 @@ ignore-changes:
 # Private to *notify
  fsnotify_*_group
  fsnotify_*_mark
+# Assume IB drivers are added/updated through OFED, which also updates IB core
+ module:drivers/infiniband/**
 
 [base]
 arches:
