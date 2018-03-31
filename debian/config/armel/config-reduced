@@ -1,0 +1,33 @@
+##
+## file: crypto/Kconfig
+##
+CONFIG_CRYPTO_MANAGER=m
+CONFIG_CRYPTO_MANAGER_DISABLE_TESTS=y
+
+##
+## file: drivers/net/wireless/Kconfig
+##
+# CONFIG_WLAN is not set
+
+##
+## file: init/Kconfig
+##
+## choice: Compiler optimization level
+CONFIG_CC_OPTIMIZE_FOR_SIZE=y
+## end choice
+
+##
+## file: mm/Kconfig
+##
+# CONFIG_ZSWAP is not set
+
+##
+## file: net/Kconfig
+##
+# CONFIG_WIRELESS is not set
+
+##
+## file: usr/Kconfig
+##
+# CONFIG_RD_BZIP2 is not set
+# CONFIG_RD_LZMA is not set
