@@ -5,7 +5,7 @@
 #
 Package: kernel-image
 Provides_marvell: rtc-modules
-Provides_versatile: rtc-modules
+Provides_mini: rtc-modules
 
 Package: fb-modules
 Depends: kernel-image, usb-modules
