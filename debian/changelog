@@ -18,6 +18,8 @@ linux (4.16~rc6-1~exp2) UNRELEASED; urgency=medium
     - Disable ZSWAP
     - Disable WIRELESS
     - Disable RD_BZIP2 and RD_LZMA
+    - Change a few features as module: I2C, I2C_CHARDEV, I2C_MV64XXX, MTD,
+      MTD_CMDLINE_PARTS, RTC_DRV_MV, and SPI_ORION
   * [armel/mini] Add flavour mini to installer
 
  -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 23 Mar 2018 21:10:34 +0900
