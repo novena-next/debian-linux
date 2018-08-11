@@ -1,7 +1,7 @@
 From: Josh Boyer <jwboyer@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:34 +0000
-Subject: [16/29] acpi: Ignore acpi_rsdp kernel param when the kernel has been
- locked down
+Subject: acpi: Ignore acpi_rsdp kernel param when the kernel has been locked
+ down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=67890a0361626ec3e035264656896c77670c414b
 Bug-Debian: https://bugs.debian.org/820008
 

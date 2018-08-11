@@ -1,6 +1,6 @@
 From: Matthew Garrett <matthew.garrett@nebula.com>
 Date: Wed, 8 Nov 2017 15:11:34 +0000
-Subject: [13/29] x86/msr: Restrict MSR access when the kernel is locked down
+Subject: x86/msr: Restrict MSR access when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=696dcddb285558b4febf318fe620a344d2b2fa47
 Bug-Debian: https://bugs.debian.org/820008
 

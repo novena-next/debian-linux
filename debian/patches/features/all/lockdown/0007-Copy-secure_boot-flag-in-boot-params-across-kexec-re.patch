@@ -1,6 +1,6 @@
 From: Dave Young <dyoung@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:32 +0000
-Subject: [07/29] Copy secure_boot flag in boot params across kexec reboot
+Subject: Copy secure_boot flag in boot params across kexec reboot
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=a6b7f780bdaa731f3e2970d65dcd52fe9ba2409d
 Bug-Debian: https://bugs.debian.org/820008
 

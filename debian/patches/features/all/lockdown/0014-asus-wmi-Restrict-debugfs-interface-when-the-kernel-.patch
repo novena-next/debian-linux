@@ -1,7 +1,6 @@
 From: Matthew Garrett <matthew.garrett@nebula.com>
 Date: Wed, 8 Nov 2017 15:11:34 +0000
-Subject: [14/29] asus-wmi: Restrict debugfs interface when the kernel is
- locked down
+Subject: asus-wmi: Restrict debugfs interface when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=2e6d31b3176ee27d216bb92a3b108f6b19d4719a
 Bug-Debian: https://bugs.debian.org/820008
 

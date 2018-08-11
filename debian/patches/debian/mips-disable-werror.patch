@@ -1,6 +1,6 @@
 From: Ben Hutchings <ben@decadent.org.uk>
 Date: Mon, 13 Sep 2010 02:16:18 +0100
-Subject: [PATCH] Partially revert "MIPS: Add -Werror to arch/mips/Kbuild"
+Subject: Partially revert "MIPS: Add -Werror to arch/mips/Kbuild"
 Forwarded: not-needed
 
 This reverts commits 66f9ba101f54bda63ab1db97f9e9e94763d0651b and

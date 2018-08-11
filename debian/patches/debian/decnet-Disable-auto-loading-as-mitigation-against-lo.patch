@@ -1,6 +1,6 @@
 From: Ben Hutchings <ben@decadent.org.uk>
 Date: Sat, 20 Nov 2010 02:24:55 +0000
-Subject: [PATCH] decnet: Disable auto-loading as mitigation against local exploits
+Subject: decnet: Disable auto-loading as mitigation against local exploits
 Forwarded: not-needed
 
 Recent review has revealed several bugs in obscure protocol

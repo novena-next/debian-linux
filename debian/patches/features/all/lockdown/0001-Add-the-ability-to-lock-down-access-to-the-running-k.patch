@@ -1,7 +1,6 @@
 From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:31 +0000
-Subject: [01/29] Add the ability to lock down access to the running kernel
- image
+Subject: Add the ability to lock down access to the running kernel image
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=6d350e2534bfaaaa3e523484b2ca44d22377e951
 Bug-Debian: https://bugs.debian.org/820008
 

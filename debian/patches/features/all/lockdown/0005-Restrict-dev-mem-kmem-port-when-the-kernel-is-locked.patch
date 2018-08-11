@@ -1,6 +1,6 @@
 From: Matthew Garrett <matthew.garrett@nebula.com>
 Date: Wed, 8 Nov 2017 15:11:32 +0000
-Subject: [05/29] Restrict /dev/{mem,kmem,port} when the kernel is locked down
+Subject: Restrict /dev/{mem,kmem,port} when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=8214bb0d847928bf08a7d8475f84c06541c5a352
 Bug-Debian: https://bugs.debian.org/820008
 

@@ -1,6 +1,6 @@
 From: Mimi Zohar <zohar@linux.vnet.ibm.com>
 Date: Wed, 8 Nov 2017 15:11:32 +0000
-Subject: [03/29] ima: require secure_boot rules in lockdown mode
+Subject: ima: require secure_boot rules in lockdown mode
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=29c55d71a8185208c7962843a29c9a84ae27b2b0
 Bug-Debian: https://bugs.debian.org/820008
 

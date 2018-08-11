@@ -1,6 +1,6 @@
 From: Matthew Garrett <mjg59@srcf.ucam.org>
 Date: Wed, 8 Nov 2017 15:11:33 +0000
-Subject: [10/29] uswsusp: Disable when the kernel is locked down
+Subject: uswsusp: Disable when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=706def46d58e9c69e91db506305485731f615e44
 Bug-Debian: https://bugs.debian.org/820008
 

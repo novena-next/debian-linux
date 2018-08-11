@@ -1,7 +1,6 @@
 From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:36 +0000
-Subject: [22/29] Lock down module params that specify hardware parameters (eg.
- ioport)
+Subject: Lock down module params that specify hardware parameters (eg. ioport)
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=d20a28efda02a7ce70b943c15246ea2f07e780f4
 Bug-Debian: https://bugs.debian.org/820008
 

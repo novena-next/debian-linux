@@ -1,6 +1,6 @@
 From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:32 +0000
-Subject: [04/29] Enforce module signatures if the kernel is locked down
+Subject: Enforce module signatures if the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=1616ef1deccf5fdb525643a6b3efae34946a148d
 Bug-Debian: https://bugs.debian.org/820008
 

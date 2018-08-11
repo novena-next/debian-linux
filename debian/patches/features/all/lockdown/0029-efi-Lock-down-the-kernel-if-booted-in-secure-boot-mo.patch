@@ -1,6 +1,6 @@
 From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:37 +0000
-Subject: [29/29] efi: Lock down the kernel if booted in secure boot mode
+Subject: efi: Lock down the kernel if booted in secure boot mode
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=a364bd945ffc141a7b17cb331bda0d8ad68f7e72
 Bug-Debian: https://bugs.debian.org/820008
 

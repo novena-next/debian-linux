@@ -1,7 +1,6 @@
 From: Linn Crosetto <linn@hpe.com>
 Date: Wed, 8 Nov 2017 15:11:35 +0000
-Subject: [18/29] acpi: Disable APEI error injection if the kernel is locked
- down
+Subject: acpi: Disable APEI error injection if the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=a9c239382bce17b9108f941130392151d5fff262
 Bug-Debian: https://bugs.debian.org/820008
 

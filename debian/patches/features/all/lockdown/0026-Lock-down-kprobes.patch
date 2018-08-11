@@ -1,6 +1,6 @@
 From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 16:14:12 +0000
-Subject: [26/29] Lock down kprobes
+Subject: Lock down kprobes
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=cfacbbe6ef95336d99817fb8063c19bd36dfaa3d
 Bug-Debian: https://bugs.debian.org/820008
 

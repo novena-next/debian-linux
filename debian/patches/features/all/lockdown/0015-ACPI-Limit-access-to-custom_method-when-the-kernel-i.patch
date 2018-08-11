@@ -1,7 +1,6 @@
 From: Matthew Garrett <matthew.garrett@nebula.com>
 Date: Wed, 8 Nov 2017 15:11:34 +0000
-Subject: [15/29] ACPI: Limit access to custom_method when the kernel is locked
- down
+Subject: ACPI: Limit access to custom_method when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=5ff99c830aacf02f25816a0da427216fb63ba16d
 Bug-Debian: https://bugs.debian.org/820008
 
