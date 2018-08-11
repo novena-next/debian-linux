@@ -139,6 +139,16 @@ def main(source, version=None):
     for name in old_series:
         print('Obsoleted patch', os.path.join(patch_dir, name))
 
+    subprocess.check_call(['dch', '-a', '[rt] Update to %s' % version])
+    subprocess.check_call(
+        ['git', 'add', 'debian/changelog',
+         os.patch.join(patch_dir, series_name)] +
+        [os.path.join(patch_dir, name) for name in new_series])
+    subprocess.check_call(
+        ['git', 'rm'] + [os.path.join(patch_dir, name) for name in old_series])
+    subprocess.check_call(
+        ['git', 'commit', '-m', '[rt] Update to %s' % version])
+
 
 if __name__ == '__main__':
     if not (1 <= len(sys.argv) <= 3):
