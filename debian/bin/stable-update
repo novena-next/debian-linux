@@ -125,11 +125,14 @@ def main(repo, new_ver):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(sys.argv) == 2:
+        main('.', sys.argv[1])
+    elif len(sys.argv) == 3:
+        main(sys.argv[1], sys.argv[2])
+    else:
         print('''\
-Usage: {} REPO VERSION"
-REPO is the git repository to generate a changelog from
+Usage: {} [REPO] VERSION"
+REPO is the git repository to generate a changelog from (default is .)
 VERSION is the stable version (without leading v)'''.format(sys.argv[0]),
               file=sys.stderr)
         sys.exit(2)
-    main(*sys.argv[1:])
