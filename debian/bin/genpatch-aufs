@@ -2,23 +2,42 @@
 
 aufs_dir="$1"
 
-export GIT_DIR="$aufs_dir/.git"
+git_in_aufs() {
+    GIT_DIR="$aufs_dir/.git" git "$@"
+}
 
 from_line='From: J. R. Okajima <hooanon05@yahoo.co.jp>'
-origin_line="Origin: https://github.com/sfjro/aufs4-standalone/tree/$(git rev-list HEAD -1)"
+origin_line="Origin: https://github.com/sfjro/aufs4-standalone/tree/$(git_in_aufs rev-list HEAD -1)"
 bug_line='Bug-Debian: https://bugs.debian.org/541828'
+
+# Rebase, dropping old commits
+GIT_EDITOR="$PWD/debian/bin/git-editor-drop" \
+    DEBIAN_KERNEL_DROP_PATTERN_TYPE=fixed \
+    DEBIAN_KERNEL_DROP_PATTERN="$bug_line" \
+    git debrebase -i
+
+mbox="$(mktemp --suffix=.mbox)"
+echo "Writing patches to $mbox"
 
 for patch in aufs4-{base,mmap,standalone}.patch; do
     {
+	echo 'From 0 Mon Sep 17 00:00:00 2001'
 	echo "$from_line"
-	git log --pretty='Date: %ad' HEAD -1 -- "$patch"
+	git_in_aufs log --pretty='Date: %ad' HEAD -1 -- "$patch"
 	echo -n 'Subject: '
 	grep -v '^SPDX-License-Identifier:' "$aufs_dir/$patch" | head -1
+	echo
 	echo "$origin_line"
 	echo "$bug_line"
 	echo
 	echo 'Patch headers added by debian/bin/genpatch-aufs'
 	echo
 	sed 's/^+.*EXPORT_SYMBOL\b/&_GPL/' < "$aufs_dir"/"$patch"
-    } > debian/patches/features/all/aufs4/"$patch"
+	echo
+    } >>"$mbox"
 done
+
+# Try "git am" and remove the mbox if successful.  If it fails,
+# leave the mbox in place to allow recovery.
+git am "$mbox"
+rm -f "$mbox"
