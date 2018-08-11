@@ -42,11 +42,11 @@ class Changelog(list):
 \n
 """
     _bottom_re = re.compile(_bottom_rules, re.X)
-    _ignore_re = re.compile(r'^(?:  |\s*\n)')
+    _middle_re = re.compile(r'^(?:  |\s*\n)')
 
     class Entry(object):
         __slot__ = ('distribution', 'source', 'version', 'urgency',
-                    'maintainer', 'date')
+                    'maintainer', 'date', 'content')
 
         def __init__(self, **kwargs):
             for key, value in kwargs.items():
@@ -65,12 +65,13 @@ class Changelog(list):
     def _parse(self, version, f):
         top_match = None
         line_no = 0
+        content = []
 
         for line in f:
             line_no += 1
 
-            if self._ignore_re.match(line):
-                pass
+            if self._middle_re.match(line):
+                content.append(line)
             elif top_match is None:
                 top_match = self._top_re.match(line)
                 if not top_match:
@@ -94,7 +95,8 @@ class Changelog(list):
                     version=v,
                     urgency=top_match.group('urgency'),
                     maintainer=bottom_match.group('maintainer'),
-                    date=bottom_match.group('date')))
+                    date=bottom_match.group('date'),
+                    content=''.join(content)))
                 top_match = bottom_match = None
 
 
