@@ -1,108 +1,78 @@
 #!/usr/bin/python3
 
-import io
 import os
 import os.path
-import re
 import subprocess
 import sys
+import tempfile
 
 
-def main(repo, range='torvalds/master..dhowells/efi-lock-down'):
-    patch_dir = 'debian/patches'
-    lockdown_patch_dir = 'features/all/lockdown'
-    series_name = 'series'
+def main(repo='.', range='torvalds/master..dhowells/efi-lock-down'):
+    from subprocess import PIPE
 
-    # Only replace patches in this subdirectory and starting with a digit
-    # - the others are presumably Debian-specific for now
-    lockdown_patch_name_re = re.compile(
-        r'^' + re.escape(lockdown_patch_dir) + r'/\d')
-    series_before = []
-    series_after = []
+    bug_line = 'Bug-Debian: https://bugs.debian.org/820008'
 
-    old_series = set()
-    new_series = set()
+    # Rebase, dropping old commits
+    rebase_env = os.environ.copy()
+    rebase_env['GIT_EDITOR'] = os.path.join(os.getcwd(),
+                                            'debian/bin/git-editor-drop')
+    rebase_env['DEBIAN_KERNEL_DROP_TYPE'] = 'fixed'
+    rebase_env['DEBIAN_KERNEL_DROP_PATTERN'] = bug_line
+    subprocess.check_call(['git', 'debrebase', '-i'], env=rebase_env)
 
-    try:
-        with open(os.path.join(patch_dir, series_name), 'r') as series_fh:
-            for line in series_fh:
-                name = line.strip()
-                if lockdown_patch_name_re.match(name):
-                    old_series.add(name)
-                elif len(old_series) == 0:
-                    series_before.append(line)
-                else:
-                    series_after.append(line)
-    except FileNotFoundError:
-        pass
+    other_repo_env = os.environ.copy()
+    other_repo_env['GIT_DIR'] = os.path.join(repo, '.git')
 
-    with open(os.path.join(patch_dir, series_name), 'w') as series_fh:
-        for line in series_before:
-            series_fh.write(line)
+    # Add Bug-Debian and Origin pseudo-headers to all commit messages.
+    def format_patch(rev, mbox):
+        mbox.write('From 0 Mon Sep 17 00:00:00 2001\n')
+        with subprocess.Popen(['git', 'format-patch', '--stdout', rev, '-1'],
+                              env=other_repo_env,
+                              stdout=PIPE, encoding='utf-8') \
+                 as proc:
+            in_header = True
+            for line in proc.stdout:
+                if in_header and line == '\n':
+                    mbox.write(
+                        '\n'
+                        'Origin: https://git.kernel.org/pub/scm/linux/kernel'
+                        '/git/dhowells/linux-fs.git/commit?id=%s\n'
+                        '%s\n'
+                        % (rev, bug_line))
+                    in_header = False
+                mbox.write(line)
+            if proc.wait():
+                raise RuntimeError('git format-patch failed')
+        mbox.write('\n')
 
-        # Add directory prefix to all filenames.
-        # Add Origin to all patch headers.
-        def add_patch(name, source_patch, origin):
-            name = os.path.join(lockdown_patch_dir, name)
-            path = os.path.join(patch_dir, name)
-            try:
-                os.unlink(path)
-            except FileNotFoundError:
-                pass
-            with open(path, 'w') as patch:
-                in_header = True
-                for line in source_patch:
-                    if in_header and re.match(r'^(\n|[^\w\s]|Index:)', line):
-                        patch.write('Origin: %s\n' % origin)
-                        if line != '\n':
-                            patch.write('\n')
-                        in_header = False
-                    patch.write(line)
-            series_fh.write(name)
-            series_fh.write('\n')
-            new_series.add(name)
+    with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8',
+                                     suffix='.mbox', delete=False) as mbox:
+        print("Writing patches to %s" % mbox.name)
 
         # XXX No signature to verify
+        with subprocess.Popen(['git', 'rev-list', '--reverse', range],
+                              env=other_repo_env,
+                              stdout=PIPE, encoding='utf-8') as proc:
+            for line in proc.stdout:
+                rev = line.strip('\n')
+                format_patch(rev, mbox)
+            if proc.wait():
+                raise RuntimeError('git rev-list failed')
 
-        env = os.environ.copy()
-        env['GIT_DIR'] = os.path.join(repo, '.git')
-        args = ['git', 'format-patch', '--subject-prefix=', range]
-        format_proc = subprocess.Popen(args,
-                                       cwd=os.path.join(patch_dir,
-                                                        lockdown_patch_dir),
-                                       env=env, stdout=subprocess.PIPE)
-        with io.open(format_proc.stdout.fileno(), encoding='utf-8') as pipe:
-            for line in pipe:
-                name = line.strip('\n')
-                with open(os.path.join(patch_dir, lockdown_patch_dir, name)) \
-                     as source_patch:
-                    patch_from = source_patch.readline()
-                    match = re.match(r'From ([0-9a-f]{40}) ', patch_from)
-                    assert match
-                    origin = ('https://git.kernel.org/pub/scm/linux/kernel/'
-                              'git/dhowells/linux-fs.git/commit?id=%s' %
-                              match.group(1))
-                    add_patch(name, source_patch, origin)
-
-        for line in series_after:
-            series_fh.write(line)
-
-    for name in new_series:
-        if name in old_series:
-            old_series.remove(name)
-        else:
-            print('Added patch', os.path.join(patch_dir, name))
-
-    for name in old_series:
-        print('Obsoleted patch', os.path.join(patch_dir, name))
+        # Try "git am" and remove the mbox if successful.  If it fails,
+        # leave the mbox in place to allow recovery.
+        mbox.flush()
+        mbox.seek(0)
+        subprocess.check_call(['git', 'am'], stdin=mbox.fileno())
+        os.unlink(mbox.name)
 
 
 if __name__ == '__main__':
-    if not (2 <= len(sys.argv) <= 3):
+    if not (1 <= len(sys.argv) <= 3):
         sys.stderr.write('''\
-Usage: %s REPO [REVISION-RANGE]
-REPO is a git repo containing the REVISION-RANGE.  The default range is
-torvalds/master..dhowells/efi-lock-down.
+Usage: %s [REPO [REVISION-RANGE]]
+REPO is a git repo containing the REVISION-RANGE.  The default repo is
+. and the default range is torvalds/master..dhowells/efi-lock-down.
 ''' % sys.argv[0])
         sys.exit(2)
     main(*sys.argv[1:])
