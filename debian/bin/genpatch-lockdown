@@ -104,6 +104,5 @@ Usage: %s REPO [REVISION-RANGE]
 REPO is a git repo containing the REVISION-RANGE.  The default range is
 torvalds/master..dhowells/efi-lock-down.
 ''' % sys.argv[0])
-        print('BASE is the base branch (default: torvalds/master).')
         sys.exit(2)
     main(*sys.argv[1:])
