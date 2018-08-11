@@ -14,6 +14,7 @@ linux (4.19~rc6-1~exp1) UNRELEASED; urgency=medium
   * debian/lib/python/debian_linux/config.py: Fix undefined exception type
   * Add Python static checks and unit tests to autopkgtest tests
   * [rt] genpatch-rt: Commit added/removed patches to git
+  * genpatch-aufs: Remove support for non-git upstream
 
  -- Ben Hutchings <ben@decadent.org.uk>  Thu, 20 Sep 2018 02:40:54 +0100
 
