@@ -1,0 +1,24 @@
+#!/bin/sh -e
+
+# Drop all commits in an interactive rebase list whose messages match
+# a given pattern.  The pattern and its type (fixed, basic, extended,
+# perl) are given as separate environment variables, as including
+# them in $GIT_EDITOR would require shell-escaping them.
+
+input="$1"
+output="$(mktemp)"
+trap 'rm "$output"' EXIT
+
+while read action hash rest; do
+    if [ -n "${action}" ] && [ "${action%#}" = "${action}" ] &&
+       [ -n "$(git -c grep.patternType="${DEBIAN_KERNEL_DROP_TYPE:-basic}" \
+                   rev-list --grep="$DEBIAN_KERNEL_DROP_PATTERN" "$hash^!")" ]
+    then
+	echo >&2 "Dropping: $hash $rest"
+    else
+	echo "$action $hash $rest"
+    fi
+done <"$input" >"$output"
+
+mv "$output" "$input"
+trap - EXIT
