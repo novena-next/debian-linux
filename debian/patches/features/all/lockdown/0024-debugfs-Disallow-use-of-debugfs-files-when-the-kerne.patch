@@ -3,6 +3,7 @@ Date: Wed, 8 Nov 2017 15:11:36 +0000
 Subject: [24/29] debugfs: Disallow use of debugfs files when the kernel is
  locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=118cc5e1c27e1a75640cf2379c1299e12791063e
+Bug-Debian: https://bugs.debian.org/820008
 
 Disallow opening of debugfs files when the kernel is locked down as various
 drivers give raw access to hardware through debugfs.

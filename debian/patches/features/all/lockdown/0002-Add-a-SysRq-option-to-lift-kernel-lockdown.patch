@@ -2,6 +2,7 @@ From: Kyle McMartin <kyle@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:31 +0000
 Subject: [02/29] Add a SysRq option to lift kernel lockdown
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=47a04d29e952d4dd896f2ec4c2ecee6971ab364d
+Bug-Debian: https://bugs.debian.org/820008
 
 Make an option to provide a sysrq key that will lift the kernel lockdown,
 thereby allowing the running kernel image to be accessed and modified.

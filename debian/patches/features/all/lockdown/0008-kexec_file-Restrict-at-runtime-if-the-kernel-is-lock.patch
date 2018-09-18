@@ -2,6 +2,7 @@ From: Chun-Yi Lee <joeyli.kernel@gmail.com>
 Date: Wed, 8 Nov 2017 15:11:33 +0000
 Subject: [08/29] kexec_file: Restrict at runtime if the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=eed4aca0409692d7d24bc64f5c98d346cd0506c4
+Bug-Debian: https://bugs.debian.org/820008
 
 When KEXEC_VERIFY_SIG is not enabled, kernel should not load images through
 kexec_file systemcall if the kernel is locked down unless IMA can be used

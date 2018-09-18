@@ -2,6 +2,7 @@ From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:35 +0000
 Subject: [20/29] Prohibit PCMCIA CIS storage when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=18b2dfc74efeafbdbb8f5d4d28da6334b7e1f1ac
+Bug-Debian: https://bugs.debian.org/820008
 
 Prohibit replacement of the PCMCIA Card Information Structure when the
 kernel is locked down.

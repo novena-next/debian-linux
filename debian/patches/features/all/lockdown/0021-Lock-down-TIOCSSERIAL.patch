@@ -2,6 +2,7 @@ From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:35 +0000
 Subject: [21/29] Lock down TIOCSSERIAL
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=f5fdeda0622ca040961521819794193777a03e8a
+Bug-Debian: https://bugs.debian.org/820008
 
 Lock down TIOCSSERIAL as that can be used to change the ioport and irq
 settings on a serial port.  This only appears to be an issue for the serial

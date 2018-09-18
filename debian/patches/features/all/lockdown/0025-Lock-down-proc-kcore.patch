@@ -2,6 +2,7 @@ From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:37 +0000
 Subject: [25/29] Lock down /proc/kcore
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=797378dc4498207c3abc1101cfdc9ef2581d8c71
+Bug-Debian: https://bugs.debian.org/820008
 
 Disallow access to /proc/kcore when the kernel is locked down to prevent
 access to cryptographic data.

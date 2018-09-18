@@ -3,6 +3,7 @@ Date: Wed, 24 May 2017 14:56:05 +0100
 Subject: [27/29] bpf: Restrict kernel image access functions when the kernel
  is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=a13e9f58894129d9fd02fdb81b56ac7590704155
+Bug-Debian: https://bugs.debian.org/820008
 
 There are some bpf functions can be used to read kernel memory:
 bpf_probe_read, bpf_probe_write_user and bpf_trace_printk.  These allow

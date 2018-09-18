@@ -2,6 +2,7 @@ From: David Howells <dhowells@redhat.com>
 Date: Wed, 8 Nov 2017 15:11:37 +0000
 Subject: [28/29] efi: Add an EFI_SECURE_BOOT flag to indicate secure boot mode
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=eb4a8603eb727afaeb9c6123eda2eda4b2757bf3
+Bug-Debian: https://bugs.debian.org/820008
 
 UEFI machines can be booted in Secure Boot mode.  Add an EFI_SECURE_BOOT
 flag that can be passed to efi_enabled() to find out whether secure boot is

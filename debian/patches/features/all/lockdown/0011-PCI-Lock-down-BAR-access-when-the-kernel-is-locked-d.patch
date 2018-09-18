@@ -2,6 +2,7 @@ From: Matthew Garrett <matthew.garrett@nebula.com>
 Date: Wed, 8 Nov 2017 15:11:33 +0000
 Subject: [11/29] PCI: Lock down BAR access when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=d107d11fd7ac982a34b1233722cb3e72f9fe5a20
+Bug-Debian: https://bugs.debian.org/820008
 
 Any hardware that can potentially generate DMA has to be locked down in
 order to avoid it being possible for an attacker to modify kernel code,

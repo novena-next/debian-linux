@@ -2,6 +2,7 @@ From: Josh Boyer <jwboyer@fedoraproject.org>
 Date: Wed, 8 Nov 2017 15:11:33 +0000
 Subject: [09/29] hibernate: Disable when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=480ddca2a40c2efd1c01cfa20d8f6c1377ddafe3
+Bug-Debian: https://bugs.debian.org/820008
 
 There is currently no way to verify the resume image when returning
 from hibernate.  This might compromise the signed modules trust model,

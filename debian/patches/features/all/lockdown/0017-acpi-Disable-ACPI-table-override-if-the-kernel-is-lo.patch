@@ -3,6 +3,7 @@ Date: Wed, 8 Nov 2017 15:11:34 +0000
 Subject: [17/29] acpi: Disable ACPI table override if the kernel is locked
  down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=5976d26de05569951641ebeb95f7240993b66063
+Bug-Debian: https://bugs.debian.org/820008
 
 From the kernel documentation (initrd_table_override.txt):
 

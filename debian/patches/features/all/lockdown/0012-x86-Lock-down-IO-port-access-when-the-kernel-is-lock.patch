@@ -2,6 +2,7 @@ From: Matthew Garrett <matthew.garrett@nebula.com>
 Date: Wed, 8 Nov 2017 15:11:34 +0000
 Subject: [12/29] x86: Lock down IO port access when the kernel is locked down
 Origin: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs.git/commit?id=00ebba940247d4c37c06da4aedecf6b80db213cf
+Bug-Debian: https://bugs.debian.org/820008
 
 IO port access would permit users to gain access to PCI configuration
 registers, which in turn (on a lot of hardware) give access to MMIO
