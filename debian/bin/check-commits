@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+anchor="$(git debrebase anchor)"
+
+echo "Commits without Origin or Forwarded header"
+echo "=========================================="
+git --no-pager log --pretty='%h %s' --invert-grep -E \
+    --grep='^(Origin:|Forwarded: (no\b|not-needed|http))' $anchor.. ':!debian'
+echo
+echo "Commits to be forwarded"
+echo "======================="
+git --no-pager log --pretty='%h %s' -E --grep='Forwarded: no\b' \
+    $anchor.. ':!debian'
