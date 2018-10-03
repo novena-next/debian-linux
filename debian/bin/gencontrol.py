@@ -7,6 +7,7 @@ import os
 import os.path
 import subprocess
 import re
+import optparse
 
 from debian_linux import config
 from debian_linux.debian import PackageDescription, PackageRelation, \
@@ -52,22 +53,28 @@ class Gencontrol(Base):
     }
 
     def __init__(self, config_dirs=["debian/config"],
-                 template_dirs=["debian/templates"]):
+                 template_dirs=["debian/templates"],
+                 only_essential=False):
         super(Gencontrol, self).__init__(
             config.ConfigCoreHierarchy(self.config_schema, config_dirs),
             Templates(template_dirs),
             VersionLinux)
         self.process_changelog()
         self.config_dirs = config_dirs
+        self.only_essential = only_essential
 
     def _setup_makeflags(self, names, makeflags, data):
         for src, dst, optional in names:
             if src in data or not optional:
                 makeflags[dst] = data[src]
 
-    def _substitute_file(self, template, vars, target, append=False):
-        with open(target, 'a' if append else 'w') as f:
-            f.write(self.substitute(self.templates[template], vars))
+    def _substitute_file(self, template, vars, target, append=False,
+                         mode=None):
+        if not self.only_essential:
+            with open(target, 'a' if append else 'w') as f:
+                f.write(self.substitute(self.templates[template], vars))
+            if mode is not None:
+                os.chmod(target, mode)
 
     def do_main_setup(self, vars, makeflags, extra):
         super(Gencontrol, self).do_main_setup(vars, makeflags, extra)
@@ -609,8 +616,8 @@ class Gencontrol(Base):
                 'debian/linux-image-%s%s-dbg.lintian-overrides' %
                 (vars['abiname'], vars['localversion']))
             self._substitute_file('image-dbg.lintian-overrides', vars,
-                                  debug_lintian_over)
-            os.chmod(debug_lintian_over, 0o755)
+                                  debug_lintian_over,
+                                  mode=0o755)
 
     def process_changelog(self):
         version = self.version = self.changelog[0].version
@@ -669,8 +676,11 @@ class Gencontrol(Base):
         return entry
 
     def write(self, packages, makefile):
-        self.write_config()
-        super(Gencontrol, self).write(packages, makefile)
+        if not self.only_essential:
+            self.write_config()
+        self.write_control(packages.values())
+        if not self.only_essential:
+            self.write_makefile(makefile)
         self.write_tests_control()
 
     def write_config(self):
@@ -684,4 +694,10 @@ class Gencontrol(Base):
 
 
 if __name__ == '__main__':
-    Gencontrol()()
+    parser = optparse.OptionParser(usage="%prog [OPTION]")
+    parser.add_option('--only-essential', action='store_true',
+                      dest='only_essential')
+
+    options, args = parser.parse_args()
+
+    Gencontrol(only_essential=options.only_essential)()
