@@ -67,7 +67,7 @@ ifndef BUILD_STAGE1
 endif
 
 maintainerclean:
-	rm -f debian/config.defines.dump debian/control debian/control.md5sum debian/linux-headers-* debian/linux-image-* debian/rules.gen
+	rm -f debian/config.defines.dump debian/linux-headers-* debian/linux-image-* debian/rules.gen
 
 clean: debian/control
 	dh_testdir
@@ -97,6 +97,8 @@ debian/control-real: debian/bin/gencontrol.py $(CONTROL_FILES)
 	@echo that it is NEVER run during the automated build. Please
 	@echo ignore the following error, the debian/control file has
 	@echo been generated SUCCESSFULLY.
+	@echo
+	@echo You may need to commit changes to the control files now.
 	@echo
 	exit 1
 

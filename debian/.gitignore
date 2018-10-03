@@ -10,8 +10,6 @@
 /*-tmp/
 /build/
 /config.defines.dump
-/control
-/control.md5sum
 /files
 /hyperv-daemons/
 /libcpupower*/
@@ -24,7 +22,6 @@
 /po/
 /rules.gen
 /stamps/
-/tests/control
 /tmp/
 /usbip/
 /xen-linux-system-*
