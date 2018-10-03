@@ -1,18 +1,5 @@
-linux (4.19~rc6-1~exp1) UNRELEASED; urgency=medium
+linux (4.19~rc6-1~exp2) UNRELEASED; urgency=medium
 
-  * New upstream release candidate
-
-  [ Ben Hutchings ]
-  * [ppc64el] udeb: Fix relative #include filenames in kernel-image module
-    list (really fixes FTBFS?)
-  * debian/bin, debian/lib/python: Fix most errors reported by pycodestyle
-  * debian/bin, debian/rules.real: Add symlink to Python package directory
-    instead of editing path
-  * debian/bin, debian/lib/python: Clean up imports based on pyflakes report
-  * debian/bin, debian/lib/python: Delete write-only vars reported by pyflakes
-  * debian/lib/python/debian_linux/gencontrol.py: Delete broken methods
-  * debian/lib/python/debian_linux/config.py: Fix undefined exception type
-  * Add Python static checks and unit tests to autopkgtest tests
   * [rt] genpatch-rt: Commit added/removed patches to git
   * genpatch-aufs: Remove support for non-git upstream
   * git-editor-drop: New script to drop commits from an interactive rebase
@@ -35,7 +22,25 @@ linux (4.19~rc6-1~exp1) UNRELEASED; urgency=medium
   * debian/rules: Generate and clean non-essential generated files as necessary
   * debian/rules: Sort file names in control.md5sum
 
- -- Ben Hutchings <ben@decadent.org.uk>  Thu, 20 Sep 2018 02:40:54 +0100
+ -- Ben Hutchings <ben@decadent.org.uk>  Wed, 03 Oct 2018 23:53:39 +0100
+
+linux (4.19~rc6-1~exp1) experimental; urgency=medium
+
+  * New upstream release candidate
+
+  [ Ben Hutchings ]
+  * [ppc64el] udeb: Fix relative #include filenames in kernel-image module
+    list (really fixes FTBFS?)
+  * debian/bin, debian/lib/python: Fix most errors reported by pycodestyle
+  * debian/bin, debian/rules.real: Add symlink to Python package directory
+    instead of editing path
+  * debian/bin, debian/lib/python: Clean up imports based on pyflakes report
+  * debian/bin, debian/lib/python: Delete write-only vars reported by pyflakes
+  * debian/lib/python/debian_linux/gencontrol.py: Delete broken methods
+  * debian/lib/python/debian_linux/config.py: Fix undefined exception type
+  * Add Python static checks and unit tests to autopkgtest tests
+
+ -- Ben Hutchings <ben@decadent.org.uk>  Wed, 03 Oct 2018 18:57:08 +0100
 
 linux (4.19~rc4-1~exp1) experimental; urgency=medium
 
