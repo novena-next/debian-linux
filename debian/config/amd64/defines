@@ -23,6 +23,11 @@ headers%gcc-8: linux-compiler-gcc-8-x86
 hardware: 64-bit PCs
 hardware-long: PCs with AMD64, Intel 64 or VIA Nano processors
 
+[cloud-amd64]
+configs:
+ variant-cloud/config
+ amd64/config.cloud-amd64
+
 [cloud-amd64_description]
 hardware: x86-64 cloud
 hardware-long: Amazon EC2, Google Compute Engine and Microsoft Azure cloud platforms
