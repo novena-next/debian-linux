@@ -1,3 +1,9 @@
+linux (4.19.67-2~novena+wip2) buster; urgency=medium
+
+  * Added novena 4.19-wip2 kernel patches
+
+ -- Jookia <166291@gmail.com>  Mon, 16 Sep 2019 07:03:00 +1000
+
 linux (4.19.67-2) buster; urgency=medium
 
   [ Salvatore Bonaccorso ]
