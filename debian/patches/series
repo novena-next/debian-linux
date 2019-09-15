@@ -256,3 +256,27 @@ features/arm64/arm64-dts-broadcom-Use-the-.dtb-name-in-the-rule-rat.patch
 
 # ABI maintenance
 debian/abi/powerpc-avoid-abi-change-for-disabling-tm.patch
+
+# novena patches
+novena/0001-fs-pstore-add-eeprom-based-pstore-backend.patch
+novena/0002-pwm-imx-Support-very-long-period-lengths.patch
+novena/0003-drm-panel-simple-Add-Innolux-N133HSE-panel-support.patch
+novena/0004-i2c-imx-Work-better-with-a-bus-under-contention.patch
+novena/0005-pci-fix-suspend-on-i.MX6.patch
+novena/0006-spi-spidev-add-novena-to-compatible-list.patch
+novena/0007-gpu-imx-attempt-to-fix-ldb-stability.patch
+novena/0008-soc-jack-register-the-jack-as-a-kctl-device.patch
+novena/0009-DRM-imx-ldb-always-restart-ldb-device.patch
+novena/0010-MLK-9785-1-usb-host-ehci-hcd-enable-park-mode.patch
+novena/0011-drm-bridge-it6251-add-new-lvds-to-dp-converter.patch
+novena/0012-drivers-mfd-senoko-Add-Senoko-device.patch
+novena/0013-ARM-dts-Add-non-mainlined-device-tree-additions.patch
+novena/0014-ARM-dts-Add-workaround-for-ERR00687.patch
+novena/0015-ARM-dts-imx6q-novena-Pin-IPUs-to-specific-muxes.patch
+novena/0016-drm-imx-Fix-drm_mode_config_cleanup-double-free.patch
+novena/0017-ARM-dts-imx6q-novena-Fix-es8328-clocks.patch
+novena/0018-ASoC-fsl-asoc-card-Merge-in-imx-es8328-code.patch
+novena/0019-ASoC-imx-es8328-Remove-driver.patch
+novena/0020-ARM-dts-imx6-add-thermal-sensor-and-cooling-cells.patch
+novena/0021-thermal-imx-Register-as-a-device-tree-sensor.patch
+novena/0022-ARM-dts-imx6q-novena-Add-ecspi3-cs-gpios.patch
