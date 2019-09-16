@@ -1,4 +1,4 @@
-linux (4.19.67-2~novena+wip2) buster; urgency=medium
+linux (4.19.67-2.novena.wip2) buster; urgency=medium
 
   * Added novena 4.19-wip2 kernel patches
 
