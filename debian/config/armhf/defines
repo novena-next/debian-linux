@@ -25,3 +25,9 @@ hardware: ARMv7 multiplatform compatible SoCs supporting LPAE
 hardware-long: ARMv7 multiplatform kernel supporting LPAE. See
   https://wiki.debian.org/DebianKernel/ARMMP for details of supported
   platforms.
+
+[novena_description]
+hardware: Novena open source laptop
+hardware-long: Novena open source laptop kernel. See
+  https://kosagi.com/w/index.php?title=Novena_Main_Page for more
+  information
