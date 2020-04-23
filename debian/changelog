@@ -1,3 +1,22 @@
+linux (4.19.98-1.novena.wip3) buster; urgency=medium
+
+  * Added Novena v4.19.98-novena-wip3 patchset:
+
+    - Add EEPROM persistent store
+    - Add support for the Innolux N133HSE panel
+    - Add support for the IT6251 LVDS to eDP bridge
+    - Add support for Senoko battery board
+    - Add support for the Novena's FPGA
+    - Add support for Heirloom GPIO fan
+    - Fix HDMI display not working
+    - Fix audio not working
+    - Fix suspend on i.MX6
+    - Underclock on high CPU temperature
+    - Stabilize I2C and USB
+    - Replace es8328 driver
+
+ -- Jookia <contact@jookia.org>  Thu, 23 Apr 2020 11:42:40 +1000
+
 linux (4.19.98-1) buster; urgency=medium
 
   * New upstream stable update:
