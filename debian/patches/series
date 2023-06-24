@@ -341,3 +341,8 @@ novena/0027-fs-pstore-eepromoops-Fix-compatibility-with-4.19.patch
 novena/0028-fs-pstore-eepromoops-Fix-do_dump_oops-option.patch
 novena/0029-fs-pstore-eepromoops-Support-unregistering-pstore.patch
 novena/0030-ARM-dts-imx6q-novena-Always-enable-the-es8328-power-.patch
+novena/0031-spi-imx-move-wml-setting-to-later-than-setup_transfe.patch
+novena/0032-spi-imx-correct-wml-as-the-last-sg-length.patch
+novena/0033-spi-imx-use-PIO-mode-if-size-is-small.patch
+novena/0034-Revert-ARM-dts-imx6q-Use-correct-SDMA-script-for-SPI.patch
+novena/0035-Revert-ARM-dts-imx6-Use-correct-SDMA-script-for-SPI-.patch
